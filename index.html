@@ -27,7 +27,8 @@
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  html { font-size: 17px; scroll-behavior: smooth; }
+  /* FIX: removed scroll-behavior:smooth from html — causes scroll-lock on hash load in GitHub Pages */
+  html { font-size: 17px; }
 
   body {
     background: #000;
@@ -35,17 +36,129 @@
     font-family: 'Cormorant Garamond', Georgia, serif;
     line-height: 1.8;
     min-height: 100vh;
+    /* FIX: ensure no overflow hidden trapping scroll */
+    overflow-x: hidden;
+    overflow-y: auto;
   }
 
-  /* ── PRINT ── */
+  /* ── PRINT / PDF ── */
+  @page {
+    size: A4;
+    margin: 18mm 16mm 22mm 16mm;
+    @bottom-center {
+      content: "© 2026 Parents2Be International — Single User Licence — Not For Redistribution — parents2beintl.com";
+      font-family: 'DM Mono', monospace;
+      font-size: 7pt;
+      color: #999;
+    }
+    @bottom-right {
+      content: counter(page) " / " counter(pages);
+      font-family: 'DM Mono', monospace;
+      font-size: 7pt;
+      color: #999;
+    }
+  }
+
+  @page :first {
+    @bottom-center { content: ""; }
+    @bottom-right { content: ""; }
+  }
+
   @media print {
-    nav, .toc-sidebar, .scroll-progress { display: none !important; }
-    body { background: #fff; color: #000; font-size: 11pt; }
-    .wrap { max-width: 100%; padding: 0; }
-    .phase-header { background: #000 !important; -webkit-print-color-adjust: exact; }
-    a { color: #000; text-decoration: none; }
-    .week-block { page-break-inside: avoid; }
-    h1, h2, h3 { page-break-after: avoid; }
+    /* hide interactive elements */
+    .site-nav,
+    .toc-sidebar,
+    .scroll-progress,
+    .nav-print { display: none !important; }
+
+    /* base reset */
+    html { font-size: 11pt; }
+    body {
+      background: #fff !important;
+      color: #000 !important;
+      font-family: 'Cormorant Garamond', Georgia, serif;
+      line-height: 1.75;
+      -webkit-print-color-adjust: exact;
+      print-color-adjust: exact;
+    }
+
+    .wrap {
+      max-width: 100% !important;
+      padding: 0 !important;
+      margin: 0 !important;
+    }
+
+    /* links plain */
+    a { color: #000 !important; text-decoration: none !important; }
+
+    /* page breaks */
+    .cover         { page-break-after: always; min-height: auto; padding: 4rem 0 2rem; }
+    .phase-header  { page-break-before: always; page-break-inside: avoid; }
+    .week-block    { page-break-before: always; page-break-inside: avoid; }
+    .references    { page-break-before: always; }
+    h1, h2, h3     { page-break-after: avoid; }
+    .checkin,
+    .remember,
+    .tool-block,
+    .notice,
+    .crisis        { page-break-inside: avoid; }
+
+    /* prevent orphans / widows */
+    p { orphans: 3; widows: 3; }
+
+    /* colour blocks print correctly */
+    .phase-header  {
+      background: #000 !important;
+      color: #fff !important;
+      border: none !important;
+    }
+    .phase-title,
+    .phase-label,
+    .phase-desc    { color: #fff !important; }
+    .phase-title em { color: #C9A84C !important; }
+
+    .notice, .crisis, .checkin, .tool-block, .guarantee, .quote-block, .remember {
+      background: #f9f9f9 !important;
+      border: 1px solid #ccc !important;
+    }
+
+    /* gold elements to dark print equivalent */
+    .cover-title em,
+    .week-subtitle,
+    .remember-text,
+    .cover-tagline { color: #8a6f2e !important; }
+
+    .cover-meta-num,
+    .section-tag,
+    .content-section-title,
+    .tool-title,
+    .checkin-title,
+    .toc-phase-title,
+    .phase-label,
+    .week-label,
+    .cover-eyebrow { color: #8a6f2e !important; }
+
+    /* watermark on every page via pseudo — belt and braces alongside @page */
+    .wrap::after {
+      content: "© 2026 Parents2Be International — Single User Licence — Not For Redistribution";
+      position: fixed;
+      bottom: 8mm;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: 'DM Mono', monospace;
+      font-size: 7pt;
+      color: #bbb;
+      letter-spacing: 0.08em;
+    }
+
+    /* TOC hides on print — not needed in physical doc */
+    .toc-list { display: none !important; }
+
+    /* section markers slim down */
+    .section-marker { padding-top: 1rem; }
+
+    footer { display: none !important; }
   }
 
   /* ── SCROLL PROGRESS ── */
@@ -58,10 +171,12 @@
     width: 0%;
     z-index: 999;
     transition: width 0.1s linear;
+    /* FIX: pointer-events none so it never intercepts clicks */
+    pointer-events: none;
   }
 
-  /* ── NAV ── */
-  nav {
+  /* ── SITE NAV ── */
+  .site-nav {
     position: sticky;
     top: 0;
     z-index: 100;
@@ -106,6 +221,9 @@
     max-width: 720px;
     margin: 0 auto;
     padding: 0 1.5rem 6rem;
+    /* FIX: explicit single-column block — no grid, no columns */
+    display: block;
+    width: 100%;
   }
 
   /* ── COVER ── */
@@ -245,6 +363,8 @@
     gap: 1rem;
     margin-bottom: 1.5rem;
     padding-top: 3rem;
+    /* FIX: width 100% prevents flex children pushing to multi-column */
+    width: 100%;
   }
   .section-tag {
     font-family: 'DM Mono', monospace;
@@ -257,15 +377,26 @@
     border-radius: 2px;
     white-space: nowrap;
     text-transform: uppercase;
+    /* FIX: flex-shrink 0 prevents squashing */
+    flex-shrink: 0;
   }
-  .section-line { flex: 1; height: 1px; background: var(--gold-border); }
+  .section-line { flex: 1; height: 1px; background: var(--gold-border); min-width: 0; }
 
-  /* ── CONTENTS TABLE ── */
-  .toc {
+  /* ── TABLE OF CONTENTS ── */
+  /* FIX: renamed from .toc (was conflicting with <nav class="toc">) to .toc-list
+     and explicitly forced single-column block layout */
+  .toc-list {
     margin: 2rem 0 3rem;
+    display: block;
+    width: 100%;
+    columns: 1 !important;
+    column-count: 1 !important;
   }
   .toc-phase {
     margin-bottom: 1.25rem;
+    display: block;
+    width: 100%;
+    break-inside: avoid;
   }
   .toc-phase-title {
     font-family: 'DM Mono', monospace;
@@ -276,6 +407,8 @@
     margin-bottom: 0.5rem;
     padding-bottom: 0.4rem;
     border-bottom: 1px solid var(--gold-border);
+    display: block;
+    width: 100%;
   }
   .toc-item {
     display: flex;
@@ -285,6 +418,9 @@
     border-bottom: 1px solid rgba(201,168,76,0.06);
     text-decoration: none;
     transition: color 0.2s;
+    width: 100%;
+    /* FIX: min-width 0 prevents flex overflow creating apparent columns */
+    min-width: 0;
   }
   .toc-item:hover .toc-item-title { color: var(--gold); }
   .toc-item-title {
@@ -292,6 +428,10 @@
     font-size: 1rem;
     color: var(--muted);
     transition: color 0.2s;
+    /* FIX: allow wrapping, no overflow truncation */
+    flex: 1;
+    min-width: 0;
+    padding-right: 0.5rem;
   }
   .toc-item-week {
     font-family: 'DM Mono', monospace;
@@ -300,6 +440,7 @@
     letter-spacing: 0.1em;
     white-space: nowrap;
     margin-left: 1rem;
+    flex-shrink: 0;
   }
 
   /* ── INTRO SECTION ── */
@@ -334,6 +475,7 @@
     color: var(--gold);
     min-width: 1.5rem;
     padding-top: 0.1rem;
+    flex-shrink: 0;
   }
   .how-body {
     font-family: 'Cormorant Garamond', serif;
@@ -380,6 +522,8 @@
     border-radius: 2px;
     padding: 2rem 2rem;
     margin: 3rem 0 2rem;
+    display: block;
+    width: 100%;
   }
   .phase-label {
     font-family: 'DM Mono', monospace;
@@ -410,6 +554,8 @@
     margin-bottom: 4rem;
     padding-top: 2rem;
     border-top: 1px solid var(--gold-border);
+    display: block;
+    width: 100%;
   }
   .week-label {
     font-family: 'DM Mono', monospace;
@@ -438,6 +584,8 @@
   /* ── CONTENT SECTIONS ── */
   .content-section {
     margin-bottom: 2rem;
+    display: block;
+    width: 100%;
   }
   .content-section-title {
     font-family: 'DM Mono', monospace;
@@ -466,6 +614,8 @@
     border: 1px solid var(--gold-border);
     background: rgba(201,168,76,0.03);
     border-radius: 2px;
+    display: block;
+    width: 100%;
   }
   .tool-title {
     font-family: 'DM Mono', monospace;
@@ -490,6 +640,8 @@
     border: 1px solid var(--gold-border);
     background: var(--gold-dim);
     border-radius: 2px;
+    display: block;
+    width: 100%;
   }
   .checkin-title {
     font-family: 'DM Mono', monospace;
@@ -527,6 +679,8 @@
     padding: 1.1rem 1.4rem;
     border-left: 2px solid var(--gold);
     background: rgba(201,168,76,0.04);
+    display: block;
+    width: 100%;
   }
   .remember-label {
     font-family: 'DM Mono', monospace;
@@ -583,6 +737,7 @@
     color: var(--gold);
     min-width: 1.5rem;
     padding-top: 0.1rem;
+    flex-shrink: 0;
   }
   .next-step-body {
     font-family: 'Cormorant Garamond', serif;
@@ -597,6 +752,8 @@
     margin-top: 3rem;
     padding-top: 2rem;
     border-top: 1px solid var(--gold-border);
+    display: block;
+    width: 100%;
   }
   .references-title {
     font-family: 'DM Mono', monospace;
@@ -614,6 +771,8 @@
     margin-bottom: 0.6rem;
     padding-left: 1rem;
     border-left: 1px solid rgba(201,168,76,0.15);
+    display: block;
+    width: 100%;
   }
 
   /* ── GUARANTEE ── */
@@ -631,8 +790,9 @@
     font-size: 1.5rem;
     line-height: 1;
     padding-top: 0.1rem;
+    flex-shrink: 0;
   }
-  .guarantee-body { flex: 1; }
+  .guarantee-body { flex: 1; min-width: 0; }
   .guarantee-title {
     font-family: 'DM Mono', monospace;
     font-size: 0.65rem;
@@ -722,18 +882,22 @@
     border-radius: 2px;
   }
 
-  @media (max-width: 480px) {
+  /* ── MOBILE ── */
+  @media (max-width: 600px) {
     .cover-title { font-size: 2.4rem; }
     .stats-table { font-size: 0.85rem; }
     .stats-table th, .stats-table td { padding: 0.5rem 0.6rem; }
+    .wrap { padding: 0 1rem 4rem; }
+    .guarantee { flex-direction: column; gap: 0.75rem; }
   }
 </style>
 </head>
 <body>
 
-<div class="scroll-progress" id="scroll-progress"></div>
+<div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
-<nav aria-label="Site navigation">
+<!-- FIX: renamed nav to use class .site-nav — avoids browser treating second <nav> (TOC) as sibling column -->
+<nav class="site-nav" aria-label="Site navigation">
   <a href="https://parents2beintl.com" class="nav-brand" aria-label="Parents2Be International">Parents2Be International</a>
   <div class="nav-right">
     <button class="nav-print" onclick="window.print()" aria-label="Print or save as PDF">Print / Save PDF</button>
@@ -749,6 +913,10 @@
     <h1 class="cover-title">The New Father's<br><em>Postpartum Code</em></h1>
     <p class="cover-sub">A 12-Week Evidence-Based Guide to Navigating Paternal Postpartum</p>
     <p class="cover-tagline">For the dad nobody checks on.</p>
+    <div style="margin-bottom:2rem;padding:1rem 1.25rem;border:1px solid rgba(201,168,76,0.4);background:rgba(201,168,76,0.07);border-radius:2px;">
+      <p style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.18em;color:#C9A84C;text-transform:uppercase;margin-bottom:0.4rem;">Important — Please Read First</p>
+      <p style="font-family:'Cormorant Garamond',serif;font-size:0.95rem;color:rgba(245,245,245,0.72);line-height:1.7;">This is your personal licensed copy. <strong style="color:#F5F5F5;">Save or download it now</strong> — your access link is single-use and may not remain active. This guide is for your use only and may not be shared, forwarded or redistributed. <strong style="color:#F5F5F5;">© 2026 Parents2Be International.</strong></p>
+    </div>
     <div class="cover-meta" aria-label="Guide statistics">
       <div class="cover-meta-item">
         <span class="cover-meta-num">12</span>
@@ -787,13 +955,26 @@
     </div>
   </div>
 
+  <!-- ══ LICENCE NOTICE ══ -->
+  <div class="notice" style="border-color:rgba(201,168,76,0.5);margin-bottom:2rem;">
+    <div class="notice-title">⚠ Licence &amp; Copyright Notice</div>
+    <div class="notice-body">
+      <p><strong>© 2026 Parents2Be International. All rights reserved.</strong></p>
+      <p style="margin-top:0.6rem;">This guide is licensed for <strong>single personal use only</strong>. By accessing or downloading this document you agree that it may not be copied, forwarded, shared, republished, resold or distributed in any form — digital or print — without express written permission from Parents2Be International.</p>
+      <p style="margin-top:0.6rem;"><strong>This is your copy. Please keep it safe.</strong> Your download or access link is single-use. If you received this without purchasing it at <strong>parents2beintl.com</strong>, please report it to hello@parents2beintl.com</p>
+      <p style="margin-top:0.6rem;color:rgba(245,245,245,0.45);font-size:0.9rem;">Unauthorised distribution constitutes copyright infringement under the Copyright, Designs and Patents Act 1988 (UK) and applicable international law.</p>
+    </div>
+  </div>
+
   <!-- ══ CONTENTS ══ -->
   <div class="section-marker" aria-hidden="true">
     <span class="section-tag">Contents</span>
     <span class="section-line"></span>
   </div>
 
-  <nav class="toc" aria-label="Table of contents">
+  <!-- FIX: was <nav class="toc"> — two <nav> elements caused browser column rendering.
+       Changed to <div class="toc-list"> + role="navigation" for accessibility -->
+  <div class="toc-list" role="navigation" aria-label="Table of contents">
     <div class="toc-phase">
       <div class="toc-phase-title">Introductory Sections</div>
       <a href="#before-you-read" class="toc-item">
@@ -877,7 +1058,7 @@
         <span class="toc-item-week">End</span>
       </a>
     </div>
-  </nav>
+  </div>
 
   <!-- ══ BEFORE YOU READ ══ -->
   <div class="section-marker" aria-hidden="true">
@@ -1681,7 +1862,7 @@
     <div class="reference-item">Saxbe, D. et al. (2017). Fathers' biological and psychological responses to becoming a dad. Hormones and Behavior, 90, 92–106.</div>
     <div class="reference-item">Carskadon, M.A. and Dement, W.C. (2011). Normal human sleep: an overview. In Principles and Practice of Sleep Medicine, 5th ed.</div>
     <div class="reference-item">Pennebaker, J.W. and Beall, S.K. (1986). Confronting a traumatic event: toward an understanding of inhibition and disease. Journal of Abnormal Psychology, 95(3), 274–281.</div>
-    <div class="reference-item">Corrigan, P.W. et al. (2012). Challenging the public stigma of mental illness: a meta-analysis of outcome studies. Psychiatric Services, 63(10), 963–973.</div>
+    <div class="reference-item">Corrigan, P.W. et al. (2012). Challenging the public stigma of mental illness: a meta-analysis of outcome studies. Psychiatric Services, 63(10), 963–970.</div>
     <div class="reference-item">Segal, Z.V., Williams, J.M.G. and Teasdale, J.D. (2013). Mindfulness-Based Cognitive Therapy for Depression. Guilford Press.</div>
   </section>
 
@@ -1694,18 +1875,31 @@
 </main>
 
 <footer>
-  <span>&copy; 2026 Parents2Be International</span>
-  <span>Evidence-Based &middot; NHS-Cited &middot; UK-Focused</span>
+  <span>&copy; 2026 Parents2Be International. All Rights Reserved.</span>
+  <span>Single User Licence &middot; Not For Redistribution</span>
   <span>parents2beintl.com</span>
 </footer>
 
 <script>
   // Scroll progress bar
   window.addEventListener('scroll', function() {
-    var scrollTop = window.scrollY;
+    var el = document.getElementById('scroll-progress');
+    if (!el) return;
+    var scrollTop = window.scrollY || document.documentElement.scrollTop;
     var docHeight = document.documentElement.scrollHeight - window.innerHeight;
-    var progress = (scrollTop / docHeight) * 100;
-    document.getElementById('scroll-progress').style.width = progress + '%';
+    var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+    el.style.width = progress + '%';
+  }, { passive: true });
+
+  // FIX: smooth scroll on anchor clicks only — not on page load (prevents scroll lock)
+  document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
+    anchor.addEventListener('click', function(e) {
+      var target = document.querySelector(this.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
   });
 </script>
 
