@@ -42,26 +42,10 @@
   }
 
   /* ── PRINT / PDF ── */
+  /* Works in Edge, Chrome, Firefox, Safari - no browser dependency */
   @page {
     size: A4;
     margin: 18mm 16mm 22mm 16mm;
-    @bottom-center {
-      content: "© 2026 Parents2Be International — Single User Licence — Not For Redistribution — parents2beintl.com";
-      font-family: 'DM Mono', monospace;
-      font-size: 7pt;
-      color: #999;
-    }
-    @bottom-right {
-      content: counter(page) " / " counter(pages);
-      font-family: 'DM Mono', monospace;
-      font-size: 7pt;
-      color: #999;
-    }
-  }
-
-  @page :first {
-    @bottom-center { content: ""; }
-    @bottom-right { content: ""; }
   }
 
   @media print {
@@ -71,12 +55,12 @@
     .scroll-progress,
     .nav-print { display: none !important; }
 
-    /* base reset */
+    /* WHITE BACKGROUND - universal browser compatibility */
     html { font-size: 11pt; }
     body {
-      background: #fff !important;
-      color: #000 !important;
-      font-family: 'Lora', Georgia, serif;
+      background: #ffffff !important;
+      color: #1a1a1a !important;
+      font-family: 'Lora', Georgia, serif !important;
       line-height: 1.75;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
@@ -89,76 +73,117 @@
     }
 
     /* links plain */
-    a { color: #000 !important; text-decoration: none !important; }
+    a { color: #1a1a1a !important; text-decoration: none !important; }
+
+    /* muted text to readable dark on white */
+    .intro-text, .content-body, .tool-body, .how-body,
+    .notice-body, .crisis-body, .checkin-list li,
+    .phase-desc, .guarantee-text, .next-step-body,
+    .toc-item-title, .reference-item, .disclaimer {
+      color: #1a1a1a !important;
+    }
 
     /* page breaks */
-    .cover         { page-break-after: always; min-height: auto; padding: 4rem 0 2rem; }
-    .phase-header  { page-break-before: always; page-break-inside: avoid; }
-    .week-block    { page-break-before: always; page-break-inside: avoid; }
-    .references    { page-break-before: always; }
-    h1, h2, h3     { page-break-after: avoid; }
+    .cover        { page-break-after: always; min-height: auto; padding: 3rem 0 2rem; border-bottom: 2px solid #C9A84C !important; }
+    .phase-header { page-break-before: always; page-break-inside: avoid; }
+    .week-block   { page-break-before: always; page-break-inside: avoid; }
+    .references   { page-break-before: always; }
+    h1, h2, h3    { page-break-after: avoid; }
     .checkin,
     .remember,
     .tool-block,
     .notice,
-    .crisis        { page-break-inside: avoid; }
+    .crisis       { page-break-inside: avoid; }
 
-    /* prevent orphans / widows */
+    /* prevent orphans and widows */
     p { orphans: 3; widows: 3; }
 
-    /* colour blocks print correctly */
-    .phase-header  {
-      background: #000 !important;
-      color: #fff !important;
-      border: none !important;
+    /* cover on white */
+    .cover-title { color: #1a1a1a !important; }
+    .cover-title em { color: #C9A84C !important; }
+    .cover-tagline { color: #C9A84C !important; }
+    .cover-eyebrow { color: #C9A84C !important; }
+    .cover-meta-num { color: #C9A84C !important; }
+    .cover-meta-label { color: #555 !important; }
+    .cover-sub { color: #555 !important; }
+
+    /* phase headers - gold border on white instead of black bg */
+    .phase-header {
+      background: #ffffff !important;
+      border: 2px solid #C9A84C !important;
+      color: #1a1a1a !important;
     }
-    .phase-title,
-    .phase-label,
-    .phase-desc    { color: #fff !important; }
+    .phase-title { color: #1a1a1a !important; }
     .phase-title em { color: #C9A84C !important; }
+    .phase-label { color: #C9A84C !important; }
+    .phase-desc { color: #1a1a1a !important; }
 
-    .notice, .crisis, .checkin, .tool-block, .guarantee, .quote-block, .remember {
-      background: #f9f9f9 !important;
-      border: 1px solid #ccc !important;
+    /* week titles */
+    .week-title { color: #1a1a1a !important; }
+    .week-subtitle { color: #C9A84C !important; }
+    .week-label { color: #888 !important; }
+
+    /* content boxes on white */
+    .notice, .checkin, .tool-block, .guarantee,
+    .quote-block, .remember, .how-item, .next-step {
+      background: #fafafa !important;
+      border: 1px solid #C9A84C !important;
+      color: #1a1a1a !important;
     }
 
-    /* gold elements to dark print equivalent */
-    .cover-title em,
-    .week-subtitle,
-    .remember-text,
-    .cover-tagline { color: #8a6f2e !important; }
+    .crisis {
+      background: #fff5f5 !important;
+      border: 1px solid #cc4444 !important;
+    }
+    .crisis-title { color: #cc4444 !important; }
+    .crisis-body { color: #1a1a1a !important; }
 
-    .cover-meta-num,
+    /* gold labels */
     .section-tag,
     .content-section-title,
     .tool-title,
     .checkin-title,
+    .notice-title,
     .toc-phase-title,
-    .phase-label,
-    .week-label,
-    .cover-eyebrow { color: #8a6f2e !important; }
+    .guarantee-title,
+    .remember-label,
+    .references-title { color: #C9A84C !important; }
 
-    /* watermark on every page via pseudo — belt and braces alongside @page */
+    /* remember text */
+    .remember-text { color: #8a6f2e !important; }
+
+    /* borders */
+    .section-line { background: #C9A84C !important; }
+    .week-block { border-top: 1px solid #C9A84C !important; }
+
+    /* strong tags readable on white */
+    strong { color: #1a1a1a !important; }
+
+    /* watermark footer on every page */
     .wrap::after {
-      content: "© 2026 Parents2Be International — Single User Licence — Not For Redistribution";
+      content: "© 2026 Parents2Be International  |  Single User Licence  |  Not For Redistribution  |  parents2beintl.com";
       position: fixed;
-      bottom: 8mm;
+      bottom: 6mm;
       left: 0;
       right: 0;
       text-align: center;
       font-family: 'DM Mono', monospace;
       font-size: 7pt;
-      color: #bbb;
-      letter-spacing: 0.08em;
+      color: #aaa;
+      letter-spacing: 0.06em;
     }
 
-    /* TOC hides on print — not needed in physical doc */
+    /* TOC hides on print */
     .toc-list { display: none !important; }
 
-    /* section markers slim down */
+    /* section markers */
     .section-marker { padding-top: 1rem; }
 
+    /* footer hide */
     footer { display: none !important; }
+
+    /* scroll bar hide */
+    .scroll-progress { display: none !important; }
   }
 
   /* ── SCROLL PROGRESS ── */
@@ -900,7 +925,7 @@
 <nav class="site-nav" aria-label="Site navigation">
   <a href="https://parents2beintl.com" class="nav-brand" aria-label="Parents2Be International">Parents2Be International</a>
   <div class="nav-right">
-    <button class="nav-print" onclick="window.print()" aria-label="Print or save as PDF">Print / Save PDF</button>
+
   </div>
 </nav>
 
