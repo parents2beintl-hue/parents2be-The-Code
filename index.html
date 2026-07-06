@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>The New Father's Postpartum Code | Parents2Be International</title>
-<meta name="description" content="A 12-week evidence-based guide to navigating paternal postpartum depression. For the dad nobody checks on.">
+<title>The New Father's Postnatal Code | Parents2Be International</title>
+<meta name="description" content="A 12-week evidence-based guide to navigating paternal postnatal depression. For the father nobody checks on.">
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-E0KTPZJX8Z"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -13,7 +13,7 @@
   gtag('config', 'G-E0KTPZJX8Z');
 </script>
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,500;0,600;1,400;1,500&family=DM+Mono:wght@300;400&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400;1,500&display=swap');
 
   :root {
     --gold: #C9A84C;
@@ -22,45 +22,39 @@
     --gold-border: rgba(201,168,76,0.25);
     --white: #F5F5F5;
     --muted: rgba(245,245,245,0.72);
-    --muted-low: rgba(245,245,245,0.42);
+    --muted-low: rgba(245,245,245,0.60);
   }
 
   *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
-  /* FIX: removed scroll-behavior:smooth from html — causes scroll-lock on hash load in GitHub Pages */
   html { font-size: 19px; }
 
   body {
     background: #000;
     color: #F5F5F5;
-    font-family: 'Lora', Georgia, serif;
+    font-family: 'Montserrat', Georgia, sans-serif;
     line-height: 1.8;
     min-height: 100vh;
-    /* FIX: ensure no overflow hidden trapping scroll */
     overflow-x: hidden;
     overflow-y: auto;
   }
 
-  /* ── PRINT / PDF ── */
-  /* Works in Edge, Chrome, Firefox, Safari - no browser dependency */
   @page {
     size: A4;
     margin: 18mm 16mm 22mm 16mm;
   }
 
   @media print {
-    /* hide interactive elements */
     .site-nav,
     .toc-sidebar,
     .scroll-progress,
     .nav-print { display: none !important; }
 
-    /* WHITE BACKGROUND - universal browser compatibility */
     html { font-size: 11pt; }
     body {
       background: #ffffff !important;
       color: #1a1a1a !important;
-      font-family: 'Lora', Georgia, serif !important;
+      font-family: 'Montserrat', Georgia, sans-serif !important;
       line-height: 1.75;
       -webkit-print-color-adjust: exact;
       print-color-adjust: exact;
@@ -72,10 +66,8 @@
       margin: 0 !important;
     }
 
-    /* links plain */
     a { color: #1a1a1a !important; text-decoration: none !important; }
 
-    /* muted text to readable dark on white */
     .intro-text, .content-body, .tool-body, .how-body,
     .notice-body, .crisis-body, .checkin-list li,
     .phase-desc, .guarantee-text, .next-step-body,
@@ -83,7 +75,6 @@
       color: #1a1a1a !important;
     }
 
-    /* page breaks */
     .cover        { page-break-after: always; min-height: auto; padding: 3rem 0 2rem; border-bottom: 2px solid #C9A84C !important; }
     .phase-header { page-break-before: always; page-break-inside: avoid; }
     .week-block   { page-break-before: always; page-break-inside: avoid; }
@@ -95,10 +86,8 @@
     .notice,
     .crisis       { page-break-inside: avoid; }
 
-    /* prevent orphans and widows */
     p { orphans: 3; widows: 3; }
 
-    /* cover on white */
     .cover-title { color: #1a1a1a !important; }
     .cover-title em { color: #C9A84C !important; }
     .cover-tagline { color: #C9A84C !important; }
@@ -107,7 +96,6 @@
     .cover-meta-label { color: #555 !important; }
     .cover-sub { color: #555 !important; }
 
-    /* phase headers - gold border on white instead of black bg */
     .phase-header {
       background: #ffffff !important;
       border: 2px solid #C9A84C !important;
@@ -118,12 +106,10 @@
     .phase-label { color: #C9A84C !important; }
     .phase-desc { color: #1a1a1a !important; }
 
-    /* week titles */
     .week-title { color: #1a1a1a !important; }
     .week-subtitle { color: #C9A84C !important; }
     .week-label { color: #888 !important; }
 
-    /* content boxes on white */
     .notice, .checkin, .tool-block, .guarantee,
     .quote-block, .remember, .how-item, .next-step {
       background: #fafafa !important;
@@ -138,7 +124,6 @@
     .crisis-title { color: #cc4444 !important; }
     .crisis-body { color: #1a1a1a !important; }
 
-    /* gold labels */
     .section-tag,
     .content-section-title,
     .tool-title,
@@ -149,17 +134,13 @@
     .remember-label,
     .references-title { color: #C9A84C !important; }
 
-    /* remember text */
     .remember-text { color: #8a6f2e !important; }
 
-    /* borders */
     .section-line { background: #C9A84C !important; }
     .week-block { border-top: 1px solid #C9A84C !important; }
 
-    /* strong tags readable on white */
     strong { color: #1a1a1a !important; }
 
-    /* watermark footer on every page */
     .wrap::after {
       content: "© 2026 Parents2Be International  |  Single User Licence  |  Not For Redistribution  |  parents2beintl.com";
       position: fixed;
@@ -167,26 +148,21 @@
       left: 0;
       right: 0;
       text-align: center;
-      font-family: 'DM Mono', monospace;
+      font-family: 'Montserrat', sans-serif;
       font-size: 7pt;
       color: #aaa;
       letter-spacing: 0.06em;
     }
 
-    /* TOC hides on print */
     .toc-list { display: none !important; }
 
-    /* section markers */
     .section-marker { padding-top: 1rem; }
 
-    /* footer hide */
     footer { display: none !important; }
 
-    /* scroll bar hide */
     .scroll-progress { display: none !important; }
   }
 
-  /* ── SCROLL PROGRESS ── */
   .scroll-progress {
     position: fixed;
     top: 0;
@@ -196,11 +172,9 @@
     width: 0%;
     z-index: 999;
     transition: width 0.1s linear;
-    /* FIX: pointer-events none so it never intercepts clicks */
     pointer-events: none;
   }
 
-  /* ── SITE NAV ── */
   .site-nav {
     position: sticky;
     top: 0;
@@ -214,7 +188,7 @@
     gap: 1rem;
   }
   .nav-brand {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Montserrat', sans-serif;
     font-size: 0.7rem;
     letter-spacing: 0.22em;
     color: var(--gold);
@@ -231,7 +205,7 @@
     background: transparent;
     border: 1px solid var(--gold-border);
     color: var(--muted);
-    font-family: 'DM Mono', monospace;
+    font-family: 'Montserrat', sans-serif;
     font-size: 0.62rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
@@ -241,17 +215,14 @@
   }
   .nav-print:hover { border-color: var(--gold); color: var(--gold); }
 
-  /* ── LAYOUT ── */
   .wrap {
     max-width: 720px;
     margin: 0 auto;
     padding: 0 1.5rem 6rem;
-    /* FIX: explicit single-column block — no grid, no columns */
     display: block;
     width: 100%;
   }
 
-  /* ── COVER ── */
   .cover {
     min-height: 88vh;
     display: flex;
@@ -262,7 +233,7 @@
     margin-bottom: 3rem;
   }
   .cover-eyebrow {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Montserrat', sans-serif;
     font-size: 0.7rem;
     letter-spacing: 0.28em;
     color: var(--gold);
@@ -279,7 +250,7 @@
     background: var(--gold-border);
   }
   .cover-title {
-    font-family: 'Lora', Georgia, serif;
+    font-family: 'Montserrat', Georgia, sans-serif;
     font-size: clamp(2.8rem, 9vw, 5.5rem);
     font-weight: 300;
     line-height: 1.05;
@@ -292,7 +263,7 @@
     font-style: italic;
   }
   .cover-sub {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Montserrat', sans-serif;
     font-size: 0.75rem;
     letter-spacing: 0.18em;
     color: var(--muted-low);
@@ -300,7 +271,7 @@
     margin-bottom: 2.5rem;
   }
   .cover-tagline {
-    font-family: 'Lora', Georgia, serif;
+    font-family: 'Montserrat', Georgia, sans-serif;
     font-size: 1.3rem;
     font-style: italic;
     color: var(--gold);
@@ -320,20 +291,19 @@
     gap: 0.2rem;
   }
   .cover-meta-num {
-    font-family: 'Lora', Georgia, serif;
+    font-family: 'Montserrat', Georgia, sans-serif;
     font-size: 2rem;
     color: var(--gold);
     line-height: 1;
   }
   .cover-meta-label {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Montserrat', sans-serif;
     font-size: 0.6rem;
     letter-spacing: 0.12em;
     color: var(--muted-low);
     text-transform: uppercase;
   }
 
-  /* ── NOTICE BOX ── */
   .notice {
     border: 1px solid rgba(201,168,76,0.3);
     background: rgba(201,168,76,0.05);
@@ -342,7 +312,7 @@
     margin: 2rem 0;
   }
   .notice-title {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Montserrat', sans-serif;
     font-size: 0.68rem;
     letter-spacing: 0.18em;
     color: var(--gold);
@@ -350,14 +320,13 @@
     margin-bottom: 0.75rem;
   }
   .notice-body {
-    font-family: 'Lora', Georgia, serif;
+    font-family: 'Montserrat', Georgia, sans-serif;
     font-size: 1rem;
     color: var(--muted);
     line-height: 1.8;
   }
   .notice-body strong { color: #F5F5F5; }
 
-  /* ── CRISIS BOX ── */
   .crisis {
     border: 1px solid rgba(200,80,80,0.5);
     background: rgba(200,80,80,0.06);
@@ -366,7 +335,7 @@
     margin: 2rem 0;
   }
   .crisis-title {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Montserrat', sans-serif;
     font-size: 0.68rem;
     letter-spacing: 0.18em;
     color: #e07070;
@@ -374,25 +343,23 @@
     margin-bottom: 0.75rem;
   }
   .crisis-body {
-    font-family: 'Lora', Georgia, serif;
+    font-family: 'Montserrat', Georgia, sans-serif;
     font-size: 1rem;
     color: var(--muted);
     line-height: 1.8;
   }
   .crisis-body strong { color: #F5F5F5; }
 
-  /* ── SECTION MARKER ── */
   .section-marker {
     display: flex;
     align-items: center;
     gap: 1rem;
     margin-bottom: 1.5rem;
     padding-top: 3rem;
-    /* FIX: width 100% prevents flex children pushing to multi-column */
     width: 100%;
   }
   .section-tag {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Montserrat', sans-serif;
     font-size: 0.62rem;
     letter-spacing: 0.18em;
     color: var(--gold);
@@ -402,14 +369,10 @@
     border-radius: 2px;
     white-space: nowrap;
     text-transform: uppercase;
-    /* FIX: flex-shrink 0 prevents squashing */
     flex-shrink: 0;
   }
   .section-line { flex: 1; height: 1px; background: var(--gold-border); min-width: 0; }
 
-  /* ── TABLE OF CONTENTS ── */
-  /* FIX: renamed from .toc (was conflicting with <nav class="toc">) to .toc-list
-     and explicitly forced single-column block layout */
   .toc-list {
     margin: 2rem 0 3rem;
     display: block;
@@ -424,7 +387,7 @@
     break-inside: avoid;
   }
   .toc-phase-title {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Montserrat', sans-serif;
     font-size: 0.65rem;
     letter-spacing: 0.18em;
     color: var(--gold);
@@ -444,33 +407,30 @@
     text-decoration: none;
     transition: color 0.2s;
     width: 100%;
-    /* FIX: min-width 0 prevents flex overflow creating apparent columns */
     min-width: 0;
   }
   .toc-item:hover .toc-item-title { color: var(--gold); }
   .toc-item-title {
-    font-family: 'Lora', Georgia, serif;
+    font-family: 'Montserrat', Georgia, sans-serif;
     font-size: 1rem;
     color: var(--muted);
     transition: color 0.2s;
-    /* FIX: allow wrapping, no overflow truncation */
     flex: 1;
     min-width: 0;
     padding-right: 0.5rem;
   }
   .toc-item-week {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Montserrat', sans-serif;
     font-size: 0.6rem;
-    color: rgba(201,168,76,0.45);
+    color: rgba(245,245,245,0.60);
     letter-spacing: 0.1em;
     white-space: nowrap;
     margin-left: 1rem;
     flex-shrink: 0;
   }
 
-  /* ── INTRO SECTION ── */
   .intro-text {
-    font-family: 'Lora', Georgia, serif;
+    font-family: 'Montserrat', Georgia, sans-serif;
     font-size: 1.15rem;
     color: var(--muted);
     line-height: 1.9;
@@ -479,7 +439,6 @@
   .intro-text strong { color: #F5F5F5; }
   .intro-text em { color: var(--gold); font-style: italic; }
 
-  /* ── HOW TO USE ── */
   .how-list {
     display: flex;
     flex-direction: column;
@@ -495,7 +454,7 @@
     border-radius: 2px;
   }
   .how-num {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Montserrat', sans-serif;
     font-size: 0.7rem;
     color: var(--gold);
     min-width: 1.5rem;
@@ -503,23 +462,22 @@
     flex-shrink: 0;
   }
   .how-body {
-    font-family: 'Lora', Georgia, serif;
+    font-family: 'Montserrat', Georgia, sans-serif;
     font-size: 1rem;
     color: var(--muted);
     line-height: 1.7;
   }
   .how-body strong { color: #F5F5F5; }
 
-  /* ── GLOBAL STATS ── */
   .stats-table {
     width: 100%;
     border-collapse: collapse;
     margin: 1.5rem 0;
-    font-family: 'Lora', Georgia, serif;
+    font-family: 'Montserrat', Georgia, sans-serif;
     font-size: 0.95rem;
   }
   .stats-table th {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Montserrat', sans-serif;
     font-size: 0.6rem;
     letter-spacing: 0.14em;
     color: var(--gold);
@@ -537,10 +495,9 @@
     vertical-align: top;
   }
   .stats-table td:first-child { color: #F5F5F5; font-weight: 400; white-space: nowrap; }
-  .stats-table td:nth-child(2) { color: var(--gold); font-family: 'DM Mono', monospace; font-size: 0.85rem; }
+  .stats-table td:nth-child(2) { color: var(--gold); font-family: 'Montserrat', sans-serif; font-size: 0.85rem; }
   .stats-table tr:last-child td { border-bottom: none; }
 
-  /* ── PHASE HEADER ── */
   .phase-header {
     background: rgba(201,168,76,0.07);
     border: 1px solid var(--gold-border);
@@ -551,7 +508,7 @@
     width: 100%;
   }
   .phase-label {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Montserrat', sans-serif;
     font-size: 0.65rem;
     letter-spacing: 0.22em;
     color: var(--gold);
@@ -559,7 +516,7 @@
     margin-bottom: 0.6rem;
   }
   .phase-title {
-    font-family: 'Lora', Georgia, serif;
+    font-family: 'Montserrat', Georgia, sans-serif;
     font-size: clamp(1.6rem, 5vw, 2.4rem);
     font-weight: 300;
     color: #F5F5F5;
@@ -568,13 +525,12 @@
   }
   .phase-title em { color: var(--gold); font-style: italic; }
   .phase-desc {
-    font-family: 'Lora', Georgia, serif;
+    font-family: 'Montserrat', Georgia, sans-serif;
     font-size: 1.05rem;
     color: var(--muted);
     line-height: 1.8;
   }
 
-  /* ── WEEK BLOCK ── */
   .week-block {
     margin-bottom: 4rem;
     padding-top: 2rem;
@@ -583,7 +539,7 @@
     width: 100%;
   }
   .week-label {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Montserrat', sans-serif;
     font-size: 0.62rem;
     letter-spacing: 0.2em;
     color: rgba(201,168,76,0.55);
@@ -591,7 +547,7 @@
     margin-bottom: 0.4rem;
   }
   .week-title {
-    font-family: 'Lora', Georgia, serif;
+    font-family: 'Montserrat', Georgia, sans-serif;
     font-size: clamp(1.5rem, 5vw, 2.2rem);
     font-weight: 300;
     color: #F5F5F5;
@@ -599,21 +555,20 @@
     margin-bottom: 0.4rem;
   }
   .week-subtitle {
-    font-family: 'Lora', Georgia, serif;
+    font-family: 'Montserrat', Georgia, sans-serif;
     font-size: 1rem;
     font-style: italic;
     color: var(--gold);
     margin-bottom: 2rem;
   }
 
-  /* ── CONTENT SECTIONS ── */
   .content-section {
     margin-bottom: 2rem;
     display: block;
     width: 100%;
   }
   .content-section-title {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Montserrat', sans-serif;
     font-size: 0.62rem;
     letter-spacing: 0.2em;
     color: var(--gold);
@@ -623,7 +578,7 @@
     border-bottom: 1px solid rgba(201,168,76,0.15);
   }
   .content-body {
-    font-family: 'Lora', Georgia, serif;
+    font-family: 'Montserrat', Georgia, sans-serif;
     font-size: 1.08rem;
     color: var(--muted);
     line-height: 1.85;
@@ -632,7 +587,6 @@
   .content-body strong { color: #F5F5F5; }
   .content-body em { color: var(--gold); font-style: italic; }
 
-  /* ── TOOL BLOCK ── */
   .tool-block {
     margin-bottom: 1.25rem;
     padding: 1.25rem 1.4rem;
@@ -643,7 +597,7 @@
     width: 100%;
   }
   .tool-title {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Montserrat', sans-serif;
     font-size: 0.65rem;
     letter-spacing: 0.14em;
     color: var(--gold);
@@ -651,14 +605,13 @@
     margin-bottom: 0.6rem;
   }
   .tool-body {
-    font-family: 'Lora', Georgia, serif;
+    font-family: 'Montserrat', Georgia, sans-serif;
     font-size: 1.05rem;
     color: var(--muted);
     line-height: 1.8;
   }
   .tool-body strong { color: #F5F5F5; }
 
-  /* ── CHECK-IN ── */
   .checkin {
     margin-top: 2rem;
     padding: 1.4rem 1.6rem;
@@ -669,7 +622,7 @@
     width: 100%;
   }
   .checkin-title {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Montserrat', sans-serif;
     font-size: 0.62rem;
     letter-spacing: 0.18em;
     color: var(--gold);
@@ -683,7 +636,7 @@
     gap: 0.6rem;
   }
   .checkin-list li {
-    font-family: 'Lora', Georgia, serif;
+    font-family: 'Montserrat', Georgia, sans-serif;
     font-size: 1rem;
     color: var(--muted);
     line-height: 1.65;
@@ -691,14 +644,13 @@
     position: relative;
   }
   .checkin-list li::before {
-    content: '—';
+    content: '-';
     position: absolute;
     left: 0;
     color: var(--gold);
     font-size: 0.8rem;
   }
 
-  /* ── REMEMBER ── */
   .remember {
     margin-top: 1.5rem;
     padding: 1.1rem 1.4rem;
@@ -708,7 +660,7 @@
     width: 100%;
   }
   .remember-label {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Montserrat', sans-serif;
     font-size: 0.58rem;
     letter-spacing: 0.18em;
     color: rgba(201,168,76,0.55);
@@ -716,14 +668,13 @@
     margin-bottom: 0.4rem;
   }
   .remember-text {
-    font-family: 'Lora', Georgia, serif;
+    font-family: 'Montserrat', Georgia, sans-serif;
     font-size: 1.1rem;
     font-style: italic;
     color: var(--gold);
     line-height: 1.6;
   }
 
-  /* ── QUOTE BLOCK ── */
   .quote-block {
     margin: 2rem 0;
     padding: 1.4rem 1.6rem;
@@ -732,7 +683,7 @@
     border-radius: 2px;
   }
   .quote-text {
-    font-family: 'Lora', Georgia, serif;
+    font-family: 'Montserrat', Georgia, sans-serif;
     font-size: 1.1rem;
     font-style: italic;
     color: var(--muted);
@@ -740,7 +691,6 @@
   }
   .quote-text strong { color: #F5F5F5; }
 
-  /* ── NEXT STEPS ── */
   .next-steps {
     display: flex;
     flex-direction: column;
@@ -757,7 +707,7 @@
     align-items: flex-start;
   }
   .next-step-num {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Montserrat', sans-serif;
     font-size: 0.7rem;
     color: var(--gold);
     min-width: 1.5rem;
@@ -765,14 +715,13 @@
     flex-shrink: 0;
   }
   .next-step-body {
-    font-family: 'Lora', Georgia, serif;
+    font-family: 'Montserrat', Georgia, sans-serif;
     font-size: 1.05rem;
     color: var(--muted);
     line-height: 1.7;
   }
   .next-step-body strong { color: #F5F5F5; }
 
-  /* ── REFERENCES ── */
   .references {
     margin-top: 3rem;
     padding-top: 2rem;
@@ -781,7 +730,7 @@
     width: 100%;
   }
   .references-title {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Montserrat', sans-serif;
     font-size: 0.68rem;
     letter-spacing: 0.2em;
     color: var(--gold);
@@ -789,9 +738,9 @@
     margin-bottom: 1.25rem;
   }
   .reference-item {
-    font-family: 'Lora', Georgia, serif;
+    font-family: 'Montserrat', Georgia, sans-serif;
     font-size: 0.9rem;
-    color: rgba(245,245,245,0.45);
+    color: rgba(245,245,245,0.60);
     line-height: 1.7;
     margin-bottom: 0.6rem;
     padding-left: 1rem;
@@ -800,7 +749,6 @@
     width: 100%;
   }
 
-  /* ── GUARANTEE ── */
   .guarantee {
     margin: 2rem 0;
     padding: 1.4rem 1.6rem;
@@ -819,7 +767,7 @@
   }
   .guarantee-body { flex: 1; min-width: 0; }
   .guarantee-title {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Montserrat', sans-serif;
     font-size: 0.65rem;
     letter-spacing: 0.15em;
     color: var(--gold);
@@ -827,13 +775,12 @@
     margin-bottom: 0.4rem;
   }
   .guarantee-text {
-    font-family: 'Lora', Georgia, serif;
+    font-family: 'Montserrat', Georgia, sans-serif;
     font-size: 1rem;
     color: var(--muted);
     line-height: 1.7;
   }
 
-  /* ── CLOSING ── */
   .closing {
     text-align: center;
     padding: 3rem 0;
@@ -841,7 +788,7 @@
     margin-top: 3rem;
   }
   .closing-eyebrow {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Montserrat', sans-serif;
     font-size: 0.68rem;
     letter-spacing: 0.28em;
     color: var(--gold);
@@ -849,7 +796,7 @@
     margin-bottom: 1.5rem;
   }
   .closing-title {
-    font-family: 'Lora', Georgia, serif;
+    font-family: 'Montserrat', Georgia, sans-serif;
     font-size: clamp(2rem, 7vw, 3.5rem);
     font-weight: 300;
     color: #F5F5F5;
@@ -857,32 +804,30 @@
     margin-bottom: 1rem;
   }
   .closing-sub {
-    font-family: 'Lora', Georgia, serif;
+    font-family: 'Montserrat', Georgia, sans-serif;
     font-size: 1.15rem;
     font-style: italic;
     color: var(--gold);
     margin-bottom: 2rem;
   }
   .closing-url {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Montserrat', sans-serif;
     font-size: 0.72rem;
     letter-spacing: 0.15em;
     color: rgba(201,168,76,0.55);
   }
 
-  /* ── DISCLAIMER ── */
   .disclaimer {
-    font-family: 'Lora', Georgia, serif;
+    font-family: 'Montserrat', Georgia, sans-serif;
     font-size: 0.88rem;
-    color: rgba(245,245,245,0.3);
+    color: rgba(245,245,245,0.60);
     line-height: 1.75;
     padding-top: 1.5rem;
     border-top: 1px solid rgba(201,168,76,0.08);
     margin-top: 3rem;
   }
-  .disclaimer strong { color: rgba(245,245,245,0.5); }
+  .disclaimer strong { color: rgba(245,245,245,0.85); }
 
-  /* ── FOOTER ── */
   footer {
     max-width: 720px;
     margin: 0 auto;
@@ -894,20 +839,18 @@
     gap: 0.5rem;
   }
   footer span {
-    font-family: 'DM Mono', monospace;
+    font-family: 'Montserrat', sans-serif;
     font-size: 0.62rem;
     letter-spacing: 0.1em;
     color: rgba(201,168,76,0.3);
   }
 
-  /* ── FOCUS ── */
   :focus-visible {
     outline: 2px solid var(--gold);
     outline-offset: 3px;
     border-radius: 2px;
   }
 
-  /* ── MOBILE ── */
   @media (max-width: 600px) {
     .cover-title { font-size: 2.4rem; }
     .stats-table { font-size: 0.85rem; }
@@ -921,7 +864,6 @@
 
 <div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
 
-<!-- FIX: renamed nav to use class .site-nav, avoids browser treating second <nav> (TOC) as sibling column -->
 <nav class="site-nav" aria-label="Site navigation">
   <a href="https://parents2beintl.com" class="nav-brand" aria-label="Parents2Be International">Parents2Be International</a>
   <div class="nav-right">
@@ -932,15 +874,14 @@
 <main>
 <div class="wrap">
 
-  <!-- ══ COVER ══ -->
   <header class="cover">
     <div class="cover-eyebrow">Parents2Be International</div>
-    <h1 class="cover-title">The New Father's<br><em>Postpartum Code</em></h1>
-    <p class="cover-sub">A 12-Week Evidence-Based Guide to Navigating Paternal Postpartum</p>
-    <p class="cover-tagline">For the dad nobody checks on.</p>
+    <h1 class="cover-title">The New Father's<br><em>Postnatal Code</em></h1>
+    <p class="cover-sub">A 12-Week Evidence-Based Guide to Navigating Paternal Postnatal</p>
+    <p class="cover-tagline">For the father nobody checks on.</p>
     <div style="margin-bottom:2rem;padding:1rem 1.25rem;border:1px solid rgba(201,168,76,0.4);background:rgba(201,168,76,0.07);border-radius:2px;">
-      <p style="font-family:'DM Mono',monospace;font-size:0.62rem;letter-spacing:0.18em;color:#C9A84C;text-transform:uppercase;margin-bottom:0.4rem;">Important, Please Read First</p>
-      <p style="font-family:'Lora',Georgia,serif;font-size:0.95rem;color:rgba(245,245,245,0.72);line-height:1.7;">This is your personal licensed copy. <strong style="color:#F5F5F5;">Save or download it now</strong>, your access link is single-use and may not remain active. This guide is for your use only and may not be shared, forwarded or redistributed. <strong style="color:#F5F5F5;">© 2026 Parents2Be International.</strong></p>
+      <p style="font-family:'Montserrat',sans-serif;font-size:0.62rem;letter-spacing:0.18em;color:#C9A84C;text-transform:uppercase;margin-bottom:0.4rem;">Important, Please Read First</p>
+      <p style="font-family:'Montserrat',Georgia,sans-serif;font-size:0.95rem;color:rgba(245,245,245,0.72);line-height:1.7;">This is your personal licensed copy. <strong style="color:#F5F5F5;">Save or download it now</strong>, your access link is single-use and may not remain active. This guide is for your use only and may not be shared, forwarded or redistributed. <strong style="color:#F5F5F5;">© 2026 Parents2Be International.</strong></p>
     </div>
     <div class="cover-meta" aria-label="Guide statistics">
       <div class="cover-meta-item">
@@ -959,7 +900,6 @@
     </div>
   </header>
 
-  <!-- ══ IMPORTANT NOTICE ══ -->
   <div class="notice">
     <div class="notice-title">Important Notice</div>
     <div class="notice-body">
@@ -968,7 +908,6 @@
     </div>
   </div>
 
-  <!-- ══ GUARANTEE ══ -->
   <div class="guarantee">
     <div class="guarantee-icon">◈</div>
     <div class="guarantee-body">
@@ -977,7 +916,6 @@
     </div>
   </div>
 
-  <!-- ══ LICENCE NOTICE ══ -->
   <div class="notice" style="border-color:rgba(201,168,76,0.5);margin-bottom:2rem;">
     <div class="notice-title">⚠ Licence &amp; Copyright Notice</div>
     <div class="notice-body">
@@ -988,14 +926,11 @@
     </div>
   </div>
 
-  <!-- ══ CONTENTS ══ -->
   <div class="section-marker" aria-hidden="true">
     <span class="section-tag">Contents</span>
     <span class="section-line"></span>
   </div>
 
-  <!-- FIX: was <nav class="toc">, two <nav> elements caused browser column rendering.
-       Changed to <div class="toc-list"> + role="navigation" for accessibility -->
   <div class="toc-list" role="navigation" aria-label="Table of contents">
     <div class="toc-phase">
       <div class="toc-phase-title">Introductory Sections</div>
@@ -1008,7 +943,7 @@
         <span class="toc-item-week">Intro</span>
       </a>
       <a href="#global-reality" class="toc-item">
-        <span class="toc-item-title">Paternal Postpartum: A Global Reality</span>
+        <span class="toc-item-title">Paternal Postnatal: A Global Reality</span>
         <span class="toc-item-week">Data</span>
       </a>
     </div>
@@ -1082,7 +1017,6 @@
     </div>
   </div>
 
-  <!-- ══ BEFORE YOU READ ══ -->
   <div class="section-marker" aria-hidden="true">
     <span class="section-tag">Before You Begin</span>
     <span class="section-line"></span>
@@ -1092,18 +1026,17 @@
     <h2 class="week-title" style="margin-bottom:1.5rem;">Before You Read A Single Word</h2>
     <div class="intro-text">
       <p>I want to tell you something I wish someone had known to say.</p>
-      <p>I watched someone I love experience paternal postpartum depression. I watched it from the closest possible distance, and I found nothing. No resource built for him. No guide written in his language. No clinical framework that acknowledged what he was going through as real, documented, and treatable.</p>
+      <p>I watched someone I love experience paternal postnatal depression. I watched it from the closest possible distance, and I found nothing. No resource built for him. No guide written in his language. No clinical framework that acknowledged what he was going through as real, documented, and treatable.</p>
       <p>I built this guide because that resource did not exist. Everything here is drawn from peer-reviewed research, clinical literature, and the lived experiences of fathers who had nowhere to turn. It is evidence-based and written in plain language, because the men who need this most are not looking for wellness content. They are looking for someone to tell them the truth about what is happening and what to actually do about it.</p>
       <p>What you are feeling right now, the detachment, the anger that comes from nowhere, the sense that everyone else got a manual you did not, <em>it has a name.</em> It has a clinical profile. It has a trajectory. And it is not permanent.</p>
-      <p>The Code is structured across 12 weeks because that is the critical window. The first 12 weeks postpartum are when paternal postpartum depression most commonly develops, deepens, and, with the right tools, can be interrupted before it compounds into something harder to shift.</p>
+      <p>The Code is structured across 12 weeks because that is the critical window. The first 12 weeks postnatal are when paternal postnatal depression most commonly develops, deepens, and, with the right tools, can be interrupted before it compounds into something harder to shift.</p>
       <p>Each week has three things: what is likely happening for you right now, why it is happening, and what to actually do about it. <strong>Practical first. Theory second. Always.</strong></p>
       <p>You do not have to read this in order. Find the week that matches where you are and start there. Come back to the rest when you are ready.</p>
       <p>This guide is what was needed then. It exists now.</p>
-      <p><strong>You are not alone in this. You are not broken. And you are not failing.</strong></p>
+      <p><strong>What you are feeling has a name, a cause, and a way through. You are not broken and you are not failing.</strong></p>
     </div>
   </section>
 
-  <!-- ══ HOW TO USE ══ -->
   <div class="section-marker" aria-hidden="true">
     <span class="section-tag">How To Use This Guide</span>
     <span class="section-line"></span>
@@ -1133,21 +1066,20 @@
       </div>
     </div>
     <div class="intro-text">
-      <p>Every father who works through this guide contributes to a growing body of evidence that paternal postpartum depression is real, treatable, and worthy of serious attention, on a UK and international scale. What you are doing here matters. Not just for you. For the next man who finds nothing when he looks.</p>
+      <p>Every father who works through this guide contributes to a growing body of evidence that paternal postnatal depression is real, treatable, and worthy of serious attention, on a UK and international scale. What you are doing here matters. Not just for you. For the next man who finds nothing when he looks.</p>
     </div>
   </section>
 
-  <!-- ══ GLOBAL STATS ══ -->
   <div class="section-marker" aria-hidden="true">
     <span class="section-tag">The Scale of the Problem</span>
     <span class="section-line"></span>
   </div>
 
   <section id="global-reality">
-    <h2 class="week-title" style="margin-bottom:0.5rem;">Paternal Postpartum: A Global Reality</h2>
+    <h2 class="week-title" style="margin-bottom:0.5rem;">Paternal Postnatal: A Global Reality</h2>
     <p class="week-subtitle">Documented across every region. This affects men like you.</p>
     <div class="intro-text">
-      <p>Paternal postpartum depression is not a Western phenomenon or a cultural anomaly. It is documented across every region of the world, in high-income and low-income countries alike. The numbers below are drawn from international meta-analyses covering more than 20,000 fathers.</p>
+      <p>Paternal postnatal depression is not a Western phenomenon or a cultural anomaly. It is documented across every region of the world, in high-income and low-income countries alike. The numbers below are drawn from international meta-analyses covering more than 20,000 fathers.</p>
     </div>
     <div style="overflow-x:auto;">
       <table class="stats-table" aria-label="Global prevalence data">
@@ -1159,8 +1091,8 @@
           </tr>
         </thead>
         <tbody>
-          <tr><td>Global Average</td><td>8–10%</td><td>Meta-analyses of 20,000+ fathers: 9.76% prenatal, 8.75% postpartum</td></tr>
-          <tr><td>United States</td><td>10–17%</td><td>Twice as common as general male depression. 1 in 10 new dads affected.</td></tr>
+          <tr><td>Global Average</td><td>8–10%</td><td>Meta-analyses of 20,000+ fathers: 9.76% prenatal, 8.75% postnatal</td></tr>
+          <tr><td>United States</td><td>10–17%</td><td>Twice as common as general male depression. 1 in 10 new fathers affected.</td></tr>
           <tr><td>UK / Europe</td><td>1.8–47%</td><td>Wide range due to screening differences. Up to 1 in 10 in the UK.</td></tr>
           <tr><td>Germany</td><td>~10%</td><td>Consistent with European averages. Paternity leave culture growing.</td></tr>
           <tr><td>Chile</td><td>18.5%</td><td>Varies geographically. First-time fathers at highest risk.</td></tr>
@@ -1172,18 +1104,16 @@
       </table>
     </div>
     <div class="quote-block">
-      <p class="quote-text">"If your partner is experiencing postpartum depression, your own risk doubles, rising to <strong>50%</strong>. This is one of the most underreported facts in paternal mental health.", Goodman (2004), Journal of Advanced Nursing</p>
+      <p class="quote-text">"If your partner is experiencing postnatal depression, your own risk doubles, rising to <strong>50%</strong>. This is one of the most underreported facts in paternal mental health.", Goodman (2004), Journal of Advanced Nursing</p>
     </div>
   </section>
 
-  <!-- ══ PHASE ONE ══ -->
   <div class="phase-header" id="phase-one">
     <div class="phase-label">Phase One, Weeks 1–4</div>
     <h2 class="phase-title"><em>Survival Mode</em></h2>
     <p class="phase-desc">Understanding what is happening and staying standing. The first four weeks are where it hits hardest. The goal in this phase is not to thrive. It is not even to feel better. It is to understand what is happening, interrupt the patterns that will make it worse, and get through each day in one piece.</p>
   </div>
 
-  <!-- WEEK 1 -->
   <section class="week-block" id="week1">
     <div class="week-label">Week 1 of 12</div>
     <h2 class="week-title">The Body Before The Brain</h2>
@@ -1192,10 +1122,10 @@
     <div class="content-section">
       <div class="content-section-title">What Is Happening This Week</div>
       <div class="content-body">
-        <p>Your testosterone has dropped by up to 30%. This is not a metaphor, it is a measurable, documented biological event. A landmark study by Gettler et al. (2011) in the Proceedings of the National Academy of Sciences tracked testosterone levels in 624 men across the transition to fatherhood and found significant drops beginning in the third trimester, continuing through early postpartum. Simultaneously, cortisol (stress hormone) and prolactin (bonding hormone) are elevated. Your brain is being chemically rewired.</p>
+        <p>Your testosterone has dropped by up to 30%. This is not a metaphor, it is a measurable, documented biological event. A landmark study by Gettler et al. (2011) in the Proceedings of the National Academy of Sciences tracked testosterone levels in 624 men across the transition to fatherhood and found significant drops beginning in the third trimester, continuing through early postnatal. Simultaneously, cortisol (stress hormone) and prolactin (bonding hormone) are elevated. Your brain is being chemically rewired.</p>
         <p>This hormonal shift is functional, it is evolution preparing you to be a caregiver. But a 30% testosterone reduction means you are operating with a neurochemical profile you have never had before. A 2020 review in Hormones and Behavior confirmed that these hormonal changes in fathers correlate directly with increased sensitivity to infant cues and elevated emotional reactivity, meaning the emotional flatness, the low energy, the sense of unreality are in part measurable biological states. They are not character flaws.</p>
         <p>Add to this: you are likely sleeping in fragments of two to four hours. Research by Williamson and Feyer (2000) established that after 17 consecutive hours without sleep, cognitive function is equivalent to a blood alcohol level of 0.05%. You are not thinking clearly, regulating emotions normally, or making decisions well. This is physiologically documented, not personal weakness.</p>
-        <p>One more critical fact: if your partner is experiencing postpartum depression, your own risk doubles, rising to 50%. A meta-analysis by Goodman (2004) was the first to document this correlation systematically. <strong>You are not just a support person. You are also at risk.</strong></p>
+        <p>One more critical fact: if your partner is experiencing postnatal depression, your own risk doubles, rising to 50%. A meta-analysis by Goodman (2004) was the first to document this correlation systematically. <strong>You are not just a support person. You are also at risk.</strong></p>
       </div>
     </div>
 
@@ -1214,7 +1144,7 @@
       </div>
       <div class="tool-block">
         <div class="tool-title">Name the Biology</div>
-        <div class="tool-body">A 2018 study found that simply understanding what is happening biologically significantly reduced self-blame and shame in new fathers with postpartum symptoms. When you feel the emotional flatness or the low-grade dread, say to yourself: <strong>'My hormones are reorganising. This is temporary and it is expected.'</strong> Accurate framing prevents the secondary layer of shame from compounding the primary experience.</div>
+        <div class="tool-body">A 2018 study found that simply understanding what is happening biologically significantly reduced self-blame and shame in new fathers with postnatal symptoms. When you feel the emotional flatness or the low-grade dread, say to yourself: <strong>'My hormones are reorganising. This is temporary and it is expected.'</strong> Accurate framing prevents the secondary layer of shame from compounding the primary experience.</div>
       </div>
       <div class="tool-block">
         <div class="tool-title">Eat Before You Are Hungry</div>
@@ -1237,7 +1167,6 @@
     </div>
   </section>
 
-  <!-- WEEK 2 -->
   <section class="week-block" id="week2">
     <div class="week-label">Week 2 of 12</div>
     <h2 class="week-title">The Identity Earthquake</h2>
@@ -1255,7 +1184,7 @@
     <div class="content-section">
       <div class="content-section-title">Why This Matters</div>
       <div class="content-body">
-        <p>A 2021 study found that unaddressed paternal identity disruption in the first four weeks was one of the strongest predictors of paternal postpartum depression at the three-month mark, stronger than sleep deprivation alone. When the loss is not acknowledged, it does not disappear. It leaks out as resentment, irritability and disconnection. Naming it is the first clinical step to processing it.</p>
+        <p>A 2021 study found that unaddressed paternal identity disruption in the first four weeks was one of the strongest predictors of paternal postnatal depression at the three-month mark, stronger than sleep deprivation alone. When the loss is not acknowledged, it does not disappear. It leaks out as resentment, irritability and disconnection. Naming it is the first clinical step to processing it.</p>
       </div>
     </div>
 
@@ -1270,7 +1199,7 @@
         <div class="tool-body">New parents who maintained at least one regular activity connected to their pre-parent identity showed significantly lower rates of identity loss distress and depression at six-month follow-up. One thing. Not five. One hobby, one ritual, one connection. Even twenty minutes. <strong>This is not selfishness, it is maintenance of the self that will be a father for the next twenty years.</strong></div>
       </div>
       <div class="tool-block">
-        <div class="tool-title">Stop Expecting to Feel Like a Dad</div>
+        <div class="tool-title">Stop Expecting to Feel Like a Father</div>
         <div class="tool-body">The majority of first-time fathers report the felt sense of their parental identity developing gradually over weeks to months, not arriving at birth. The cultural expectation of instant transformation is not supported by the evidence. Show up anyway. The feeling follows the action, not the other way around.</div>
       </div>
     </div>
@@ -1290,7 +1219,6 @@
     </div>
   </section>
 
-  <!-- WEEK 3 -->
   <section class="week-block" id="week3">
     <div class="week-label">Week 3 of 12</div>
     <h2 class="week-title">The Anger You Do Not Understand</h2>
@@ -1343,7 +1271,6 @@
     </div>
   </section>
 
-  <!-- WEEK 4 -->
   <section class="week-block" id="week4">
     <div class="week-label">Week 4 of 12</div>
     <h2 class="week-title">The Relationship Is Under Pressure</h2>
@@ -1353,7 +1280,7 @@
       <div class="content-section-title">What Is Happening This Week</div>
       <div class="content-body">
         <p>A landmark study tracking 218 couples found that relationship satisfaction declined significantly in the first year after birth for 67% of couples. <strong>This is not a sign that your relationship is failing. It is a statistically normal response to one of the most demanding transitions two people can experience simultaneously.</strong></p>
-        <p>A 2020 study found that the volume of logistical communication between new parents increases by over 300% in the first eight weeks postpartum, displacing almost all non-logistical conversation. The intimacy that sustained your relationship has not disappeared. It has been crowded out.</p>
+        <p>A 2020 study found that the volume of logistical communication between new parents increases by over 300% in the first eight weeks postnatal, displacing almost all non-logistical conversation. The intimacy that sustained your relationship has not disappeared. It has been crowded out.</p>
         <p>The specific dynamic that emerges in many couples is the demand-withdrawal pattern, one partner withdraws under stress; the other interprets this as abandonment and escalates to re-engage; which drives further withdrawal. Left unaddressed, this spiral becomes the default relationship mode.</p>
       </div>
     </div>
@@ -1401,14 +1328,12 @@
     </div>
   </section>
 
-  <!-- ══ PHASE TWO ══ -->
   <div class="phase-header" id="phase-two">
     <div class="phase-label">Phase Two, Weeks 5–8</div>
     <h2 class="phase-title"><em>The Harder Middle</em></h2>
-    <p class="phase-desc">When the adrenaline runs out and reality settles in. Weeks five through eight are when most fathers hit the real wall. The adrenaline of the first month has gone. The novelty has worn off. The sleep debt has compounded. This is the phase where paternal postpartum depression most commonly deepens, and where the right tools make the most dramatic difference.</p>
+    <p class="phase-desc">When the adrenaline runs out and reality settles in. Weeks five through eight are when most fathers hit the real wall. The adrenaline of the first month has gone. The novelty has worn off. The sleep debt has compounded. This is the phase where paternal postnatal depression most commonly deepens, and where the right tools make the most dramatic difference.</p>
   </div>
 
-  <!-- WEEK 5 -->
   <section class="week-block" id="week5">
     <div class="week-label">Week 5 of 12</div>
     <h2 class="week-title">When The Adrenaline Runs Out</h2>
@@ -1418,15 +1343,15 @@
       <div class="content-section-title">What Is Happening This Week</div>
       <div class="content-body">
         <p>Week five is where many fathers describe hitting a wall that weeks one and two did not prepare them for. The initial adrenaline has depleted. The sleep debt has compounded to the point where it is now measurably affecting personality and emotional regulation. A 2023 study found that cumulative sleep restriction across four to six weeks produces mood disturbance and irritability comparable to acute total sleep deprivation.</p>
-        <p>A meta-analysis published in JAMA Pediatrics identified the <strong>three-to-six month postpartum window as the period of peak depression onset in fathers</strong>, distinct from the earlier peak in mothers. You are in that window now.</p>
-        <p>This is also the phase where avoidance coping tends to escalate. The late-night scrolling becomes habitual. The extra drink becomes regular. A 2022 review found that new fathers show elevated rates of alcohol use specifically in the three-to-six month postpartum window, driven by disrupted sleep, identity strain and emotional suppression.</p>
+        <p>A meta-analysis published in JAMA Pediatrics identified the <strong>three-to-six month postnatal window as the period of peak depression onset in fathers</strong>, distinct from the earlier peak in mothers. You are in that window now.</p>
+        <p>This is also the phase where avoidance coping tends to escalate. The late-night scrolling becomes habitual. The extra drink becomes regular. A 2022 review found that new fathers show elevated rates of alcohol use specifically in the three-to-six month postnatal window, driven by disrupted sleep, identity strain and emotional suppression.</p>
       </div>
     </div>
 
     <div class="content-section">
       <div class="content-section-title">Why This Matters</div>
       <div class="content-body">
-        <p>A 2021 systematic review identified weeks four through eight as the highest-risk window for paternal postpartum depression onset and deepening. The tools you build right now are the ones that will carry you through. This is not the time to power through, it is the time to be strategic.</p>
+        <p>A 2021 systematic review identified weeks four through eight as the highest-risk window for paternal postnatal depression onset and deepening. The tools you build right now are the ones that will carry you through. This is not the time to power through, it is the time to be strategic.</p>
       </div>
     </div>
 
@@ -1461,7 +1386,6 @@
     </div>
   </section>
 
-  <!-- WEEK 6 -->
   <section class="week-block" id="week6">
     <div class="week-label">Week 6 of 12</div>
     <h2 class="week-title">The Bonding Gap</h2>
@@ -1472,7 +1396,7 @@
       <div class="content-body">
         <p>Paternal bonding is frequently delayed compared to maternal bonding, and almost never discussed. Research by Dr. Ruth Feldman found that while fathers do show oxytocin responses to infant interaction, these responses are activated primarily through play, touch and sustained caregiving, not through birth itself. <strong>Paternal bonding is built through doing, not through witnessing.</strong></p>
         <p>Many fathers at week six describe loving their child in an abstract, dutiful way while not yet feeling the visceral, overwhelming love they expected. A 2021 qualitative study found that this gap was one of the most commonly reported and least discussed aspects of early fatherhood, producing significant shame in men who assumed the feeling would arrive automatically at birth.</p>
-        <p>The bonding gap is also widened by depression. Anhedonia, the clinical inability to feel pleasure or connection, is a core symptom of depression. If you are experiencing paternal postpartum depression, the gap in bonding is likely a symptom of that clinical state, not evidence that you are not cut out for fatherhood.</p>
+        <p>The bonding gap is also widened by depression. Anhedonia, the clinical inability to feel pleasure or connection, is a core symptom of depression. If you are experiencing paternal postnatal depression, the gap in bonding is likely a symptom of that clinical state, not evidence that you are not cut out for fatherhood.</p>
       </div>
     </div>
 
@@ -1514,7 +1438,6 @@
     </div>
   </section>
 
-  <!-- WEEK 7 -->
   <section class="week-block" id="week7">
     <div class="week-label">Week 7 of 12</div>
     <h2 class="week-title">Intrusive Thoughts And What They Actually Mean</h2>
@@ -1523,9 +1446,9 @@
     <div class="content-section">
       <div class="content-section-title">What Is Happening This Week</div>
       <div class="content-body">
-        <p>Intrusive thoughts in new fathers are more common than almost any other postpartum symptom and almost never discussed. A 2019 study found that up to <strong>57% of new parents, including fathers</strong>, reported experiencing intrusive thoughts in the first postpartum year.</p>
+        <p>Intrusive thoughts in new fathers are more common than almost any other postnatal symptom and almost never discussed. A 2019 study found that up to <strong>57% of new parents, including fathers</strong>, reported experiencing intrusive thoughts in the first postnatal year.</p>
         <p>These thoughts are deeply distressing precisely because they are ego-dystonic, a clinical term meaning they feel completely at odds with who you believe yourself to be. This distress is actually diagnostic evidence that you are not a threat to your child. Research on violent ideation is clear: people who intend harm do not experience these thoughts as horrifying. <strong>The horror is the protection.</strong></p>
-        <p>Intrusive thoughts are a formally recognised feature of postpartum anxiety and postpartum OCD in both men and women, documented in the DSM-5 and ICD-11. They are driven by an exhausted, hypervigilant nervous system trying to keep your baby safe by running worst-case scenarios compulsively.</p>
+        <p>Intrusive thoughts are a formally recognised feature of postnatal anxiety and postnatal OCD in both men and women, documented in the DSM-5 and ICD-11. They are driven by an exhausted, hypervigilant nervous system trying to keep your baby safe by running worst-case scenarios compulsively.</p>
       </div>
     </div>
 
@@ -1567,7 +1490,6 @@
     </div>
   </section>
 
-  <!-- WEEK 8 -->
   <section class="week-block" id="week8">
     <div class="week-label">Week 8 of 12</div>
     <h2 class="week-title">Asking For Help Without Losing Yourself</h2>
@@ -1576,8 +1498,8 @@
     <div class="content-section">
       <div class="content-section-title">What Is Happening This Week</div>
       <div class="content-body">
-        <p>A 2020 qualitative study found that the average delay between a father first experiencing significant postpartum distress and first disclosing it to anyone was seven to eight weeks, driven not by indifference but by a genuine absence of a template for doing it. Most men have never been taught how to ask for support, what to ask for, or who to ask.</p>
-        <p>A 2021 study surveying 312 fathers across six countries found that fear of raising questions about fitness as a parent was the single most commonly cited barrier to help-seeking, and the most unfounded. <strong>GPs and perinatal mental health professionals are trained to treat paternal postpartum, not report it.</strong></p>
+        <p>A 2020 qualitative study found that the average delay between a father first experiencing significant postnatal distress and first disclosing it to anyone was seven to eight weeks, driven not by indifference but by a genuine absence of a template for doing it. Most men have never been taught how to ask for support, what to ask for, or who to ask.</p>
+        <p>A 2021 study surveying 312 fathers across six countries found that fear of raising questions about fitness as a parent was the single most commonly cited barrier to help-seeking, and the most unfounded. <strong>GPs and perinatal mental health professionals are trained to treat paternal postnatal, not report it.</strong></p>
         <p>A 2022 NHS England audit found that fewer than 15% of perinatal mental health services had a specific pathway for fathers. This is a systemic failure, not a personal one.</p>
       </div>
     </div>
@@ -1585,7 +1507,7 @@
     <div class="content-section">
       <div class="content-section-title">Why This Matters</div>
       <div class="content-body">
-        <p>A major systematic review identified perceived social support as the single strongest protective factor against paternal postpartum depression, stronger than medication, stronger than therapy alone. <strong>Not willpower. Not stoicism. Connection and disclosure.</strong></p>
+        <p>A major systematic review identified perceived social support as the single strongest protective factor against paternal postnatal depression, stronger than medication, stronger than therapy alone. <strong>Not willpower. Not stoicism. Connection and disclosure.</strong></p>
       </div>
     </div>
 
@@ -1593,7 +1515,7 @@
       <div class="content-section-title">Your Tools This Week</div>
       <div class="tool-block">
         <div class="tool-title">The GP Conversation Script</div>
-        <div class="tool-body">Book an appointment this week. Say these exact words: <strong>'I have become a father recently and I am not doing as well as I am presenting. I think I might be experiencing paternal postpartum depression.'</strong> Ask explicitly for a referral to CBT and whether medication is appropriate. You are entitled to raise both.</div>
+        <div class="tool-body">Book an appointment this week. Say these exact words: <strong>'I have become a father recently and I am not doing as well as I am presenting. I think I might be experiencing paternal postnatal depression.'</strong> Ask explicitly for a referral to CBT and whether medication is appropriate. You are entitled to raise both.</div>
       </div>
       <div class="tool-block">
         <div class="tool-title">Define the Help You Need</div>
@@ -1620,14 +1542,12 @@
     </div>
   </section>
 
-  <!-- ══ PHASE THREE ══ -->
   <div class="phase-header" id="phase-three">
     <div class="phase-label">Phase Three, Weeks 9–12</div>
     <h2 class="phase-title"><em>Building Forward</em></h2>
     <p class="phase-desc">From surviving to actually being present. By week nine, you have enough data about your own experience to start building forward intentionally. The goal shifts from crisis management to foundation building, relationships, identity, sustainable routines, and the longer arc of who you want to be as a father.</p>
   </div>
 
-  <!-- WEEK 9 -->
   <section class="week-block" id="week9">
     <div class="week-label">Week 9 of 12</div>
     <h2 class="week-title">Building The Sustainable Version</h2>
@@ -1636,7 +1556,7 @@
     <div class="content-section">
       <div class="content-section-title">What Is Happening This Week</div>
       <div class="content-body">
-        <p>By week nine, if you have been doing the work, even imperfectly, you have more data about yourself than you did eight weeks ago. You know your triggers. You know your coping patterns. A 2021 study found that self-awareness of emotional triggers and coping patterns was a stronger predictor of sustained recovery from paternal postpartum depression than either medication or therapy alone at twelve-month follow-up.</p>
+        <p>By week nine, if you have been doing the work, even imperfectly, you have more data about yourself than you did eight weeks ago. You know your triggers. You know your coping patterns. A 2021 study found that self-awareness of emotional triggers and coping patterns was a stronger predictor of sustained recovery from paternal postnatal depression than either medication or therapy alone at twelve-month follow-up.</p>
         <p>The shift that happens in phase three is from reactive to intentional. Research is unambiguous: emotional availability and consistency of paternal presence predict child outcomes more reliably than intensity of engagement. <strong>Your child does not need you to be extraordinary every day. They need you to be reliably there.</strong></p>
       </div>
     </div>
@@ -1679,7 +1599,6 @@
     </div>
   </section>
 
-  <!-- WEEK 10 -->
   <section class="week-block" id="week10">
     <div class="week-label">Week 10 of 12</div>
     <h2 class="week-title">The Relationship After The Storm</h2>
@@ -1689,8 +1608,8 @@
       <div class="content-section-title">What Is Happening This Week</div>
       <div class="content-body">
         <p>By week ten, most couples have accumulated a backlog of unexpressed things, needs that went unmet, moments that stung, distances that grew without being named. Gottman and Levenson found that accumulated unaddressed grievances are one of the four strongest predictors of relationship dissolution. <strong>The backlog does not dissolve with time. It calcifies.</strong></p>
-        <p>Couples who attempted single-session resolution of accumulated postpartum grievances showed worse outcomes at follow-up than those who focused on establishing small, consistent new patterns of attunement. Sustained small change outperforms intense one-off repair.</p>
-        <p>A 2021 study found that emotional reconnection was the primary predictor of postpartum sexual intimacy restoration, more predictive than time elapsed or physical recovery alone.</p>
+        <p>Couples who attempted single-session resolution of accumulated postnatal grievances showed worse outcomes at follow-up than those who focused on establishing small, consistent new patterns of attunement. Sustained small change outperforms intense one-off repair.</p>
+        <p>A 2021 study found that emotional reconnection was the primary predictor of postnatal sexual intimacy restoration, more predictive than time elapsed or physical recovery alone.</p>
       </div>
     </div>
 
@@ -1732,7 +1651,6 @@
     </div>
   </section>
 
-  <!-- WEEK 11 -->
   <section class="week-block" id="week11">
     <div class="week-label">Week 11 of 12</div>
     <h2 class="week-title">When It Is More Than This Guide Can Hold</h2>
@@ -1742,7 +1660,7 @@
       <div class="content-section-title">What Is Happening This Week</div>
       <div class="content-body">
         <p>This guide can do a lot. It cannot do everything. The clinical threshold, as defined in the DSM-5, is five or more depressive symptoms persisting for two or more weeks, causing functional impairment. The signs specific to this presentation: persistent low mood or anhedonia lasting more than two weeks that is not shifting; intrusive thoughts increasing in frequency or intensity; thoughts of self-harm or leaving permanently; substance use that has become daily and difficult to stop; inability to function at work or in basic daily tasks.</p>
-        <p>A 2020 review found that fathers with untreated postpartum depression showed no significant spontaneous recovery at twelve-month follow-up without professional intervention. <strong>Normal difficulty resolves. Clinical depression does not, not on its own, and not on your timeline.</strong></p>
+        <p>A 2020 review found that fathers with untreated postnatal depression showed no significant spontaneous recovery at twelve-month follow-up without professional intervention. <strong>Normal difficulty resolves. Clinical depression does not, not on its own, and not on your timeline.</strong></p>
       </div>
     </div>
 
@@ -1760,11 +1678,11 @@
       <div class="content-section-title">Your Tools This Week</div>
       <div class="tool-block">
         <div class="tool-title">The GP Route (UK)</div>
-        <div class="tool-body">Book an appointment this week. Say these words: <strong>'I am a new father and I am not coping. I think I may be experiencing paternal postpartum depression.'</strong> Ask specifically about CBT referrals and whether medication is appropriate. If NHS waiting times are too long, BACP-registered therapists can be found at <strong>bacp.co.uk</strong>.</div>
+        <div class="tool-body">Book an appointment this week. Say these words: <strong>'I am a new father and I am not coping. I think I may be experiencing paternal postnatal depression.'</strong> Ask specifically about CBT referrals and whether medication is appropriate. If NHS waiting times are too long, BACP-registered therapists can be found at <strong>bacp.co.uk</strong>.</div>
       </div>
       <div class="tool-block">
         <div class="tool-title">International Support</div>
-        <div class="tool-body">Postpartum Support International operates globally and runs dedicated dad support groups every Friday online at <strong>postpartum.net</strong>. US: National Maternal Mental Health Hotline 1-833-852-6262. Australia: ForWhen Helpline at forwhenhelpline.org.au. Germany: contact your Hausarzt and ask for a referral to a Psychiater. India: iCall helpline 9152987821.</div>
+        <div class="tool-body">Postnatal Support International operates globally and runs dedicated father support groups every Friday online at <strong>postnatal.net</strong>. US: National Maternal Mental Health Hotline 1-833-852-6262. Australia: ForWhen Helpline at forwhenhelpline.org.au. Germany: contact your Hausarzt and ask for a referral to a Psychiater. India: iCall helpline 9152987821.</div>
       </div>
     </div>
 
@@ -1783,7 +1701,6 @@
     </div>
   </section>
 
-  <!-- WEEK 12 -->
   <section class="week-block" id="week12">
     <div class="week-label">Week 12 of 12</div>
     <h2 class="week-title">The Father You Are Becoming</h2>
@@ -1794,7 +1711,7 @@
       <div class="content-body">
         <p>You have made it to week twelve. Whatever that journey looked like, whether you read every week in order or opened this guide in the middle of a hard night and found the one page that helped, you are here. That is not a small thing.</p>
         <p>A 2020 longitudinal study found that the patterns of emotional engagement, self-awareness and relational attentiveness established by fathers in the first three months were the strongest predictors of their parenting behaviour and wellbeing at the two-year mark.</p>
-        <p>A 2019 qualitative study found that fathers who had experienced and navigated paternal postpartum depression reported, at follow-up, <strong>significantly higher scores on empathic attunement, emotional availability and parenting confidence</strong> than comparison fathers who had not experienced it. Going through this builds something in you that coasting through does not.</p>
+        <p>A 2019 qualitative study found that fathers who had experienced and navigated paternal postnatal depression reported, at follow-up, <strong>significantly higher scores on empathic attunement, emotional availability and parenting confidence</strong> than comparison fathers who had not experienced it. Going through this builds something in you that coasting through does not.</p>
       </div>
     </div>
 
@@ -1809,7 +1726,7 @@
         <div class="tool-body">Name one thing you will continue to do for your mental health beyond this guide. One recurring action, one relationship you will keep honest, one resource you will stay connected to. Fatherhood is a long road. <strong>Maintained infrastructure is how you travel it.</strong></div>
       </div>
       <div class="tool-block">
-        <div class="tool-title">Tell Another Dad</div>
+        <div class="tool-title">Tell Another Father</div>
         <div class="tool-body">First-person disclosure from peers is more effective at reducing mental health stigma than any media campaign or clinical communication. The most powerful thing you can do is tell one other new father this exists. Not the whole story. Just: <strong>'There is a guide I found that helped. Here it is.'</strong> That is how the conversation changes. One father at a time.</div>
       </div>
     </div>
@@ -1819,7 +1736,7 @@
       <ul class="checkin-list">
         <li>What is the most important thing you have learned about yourself in twelve weeks?</li>
         <li>What will you continue to do for your mental health going forward?</li>
-        <li>Is there another dad in your life who needs to know this guide exists?</li>
+        <li>Is there another father in your life who needs to know this guide exists?</li>
       </ul>
     </div>
 
@@ -1829,7 +1746,6 @@
     </div>
   </section>
 
-  <!-- ══ CLOSING ══ -->
   <section id="now-what">
     <div class="section-marker" aria-hidden="true">
       <span class="section-tag">You Made It</span>
@@ -1838,7 +1754,7 @@
 
     <div class="intro-text">
       <p>Twelve weeks. You have done the work, or started it, or returned to it, or found it at 3am when you needed it most. However this guide found you, it has done what it was built to do if it helped you feel less alone, more understood, and more equipped.</p>
-      <p>Paternal postpartum depression is not a life sentence. It is a clinical condition with a documented trajectory and effective interventions. The men who come through it, and most do, consistently report that the experience, while brutal in the moment, built something in them that would not have developed any other way. A capacity for empathy. A self-awareness. A relationship with their child built on real presence rather than performance.</p>
+      <p>Paternal postnatal depression is not a life sentence. It is a clinical condition with a documented trajectory and effective interventions. The men who come through it, and most do, consistently report that the experience, while brutal in the moment, built something in them that would not have developed any other way. A capacity for empathy. A self-awareness. A relationship with their child built on real presence rather than performance.</p>
       <p>That is what is on the other side of this. Not a perfect father. A real one.</p>
     </div>
 
@@ -1858,23 +1774,22 @@
       </div>
       <div class="next-step">
         <span class="next-step-num">3</span>
-        <div class="next-step-body"><strong>Share this guide.</strong> If this helped you, it will help someone else. Send it to the dad you know who is quietly struggling. You might be the reason he finds it.</div>
+        <div class="next-step-body"><strong>Share this guide.</strong> If this helped you, it will help someone else. Send it to the father you know who is quietly struggling. You might be the reason he finds it.</div>
       </div>
     </div>
 
     <div class="closing">
       <div class="closing-eyebrow">Parents2Be International</div>
-      <h2 class="closing-title">You Are Not Alone.</h2>
+      <h2 class="closing-title">You Showed Up.</h2>
       <p class="closing-sub">Fathers who have been where you are. The conversation continues.</p>
       <p class="closing-url">parents2beintl.com · parents2beintl-hue.github.io/parents2be-assessment</p>
     </div>
   </section>
 
-  <!-- ══ REFERENCES ══ -->
   <section class="references" id="references">
     <div class="references-title">References</div>
-    <div class="reference-item">Paulson, J.F. and Bazemore, S.D. (2010). Prenatal and postpartum depression in fathers and its association with maternal depression: a meta-analysis. JAMA, 303(19), 1961–1969.</div>
-    <div class="reference-item">Goodman, J.H. (2004). Paternal postpartum depression, its relationship to maternal postpartum depression, and implications for family health. Journal of Advanced Nursing, 45(1), 26–35.</div>
+    <div class="reference-item">Paulson, J.F. and Bazemore, S.D. (2010). Prenatal and postnatal depression in fathers and its association with maternal depression: a meta-analysis. JAMA, 303(19), 1961–1969.</div>
+    <div class="reference-item">Goodman, J.H. (2004). Paternal postnatal depression, its relationship to maternal postnatal depression, and implications for family health. Journal of Advanced Nursing, 45(1), 26–35.</div>
     <div class="reference-item">Gettler, L.T. et al. (2011). Longitudinal evidence that fatherhood decreases testosterone in human males. PNAS, 108(39), 16194–16199.</div>
     <div class="reference-item">Williamson, A.M. and Feyer, A.M. (2000). Moderate sleep deprivation produces impairments in cognitive and motor performance equivalent to legally prescribed levels of alcohol intoxication. Occupational and Environmental Medicine, 57(10), 649–655.</div>
     <div class="reference-item">Martin, L.A., Neighbors, H.W. and Griffith, D.M. (2013). The experience of symptoms of depression in men vs women. JAMA Psychiatry, 70(10), 1100–1106.</div>
@@ -1903,7 +1818,6 @@
 </footer>
 
 <script>
-  // Scroll progress bar
   window.addEventListener('scroll', function() {
     var el = document.getElementById('scroll-progress');
     if (!el) return;
@@ -1913,7 +1827,6 @@
     el.style.width = progress + '%';
   }, { passive: true });
 
-  // FIX: smooth scroll on anchor clicks only, not on page load (prevents scroll lock)
   document.querySelectorAll('a[href^="#"]').forEach(function(anchor) {
     anchor.addEventListener('click', function(e) {
       var target = document.querySelector(this.getAttribute('href'));
